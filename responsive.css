@@ -1,0 +1,57 @@
+/* === Desktop untouched === */
+@media (min-width: 1025px) {
+    #site-wrapper {
+      position: static !important;
+      transform: none !important;
+      width: auto !important;
+      margin: 0 auto !important;
+      left: auto !important;
+    }
+  }
+  
+  /* === Mobile/Tablet: sirf #site-wrapper scale hoga === */
+  @media (max-width: 1024px) {
+    body {
+      transform: none !important;
+      width: auto !important;
+    }
+    #site-wrapper {
+      position: relative !important;
+      left: 50% !important;
+      transform-origin: top center !important;
+      width: 1440px !important;  /* design width */
+      margin: 0 !important;
+    }
+  }
+  
+  /* Scale breakpoints */
+  @media (max-width: 1024px) and (min-width: 901px) {
+    #site-wrapper { transform: translateX(-50%) scale(0.78) !important; }
+  }
+  @media (max-width: 900px) and (min-width: 769px) {
+    #site-wrapper { transform: translateX(-50%) scale(0.72) !important; }
+  }
+  @media (max-width: 768px) and (min-width: 601px) {
+    #site-wrapper { transform: translateX(-50%) scale(0.62) !important; }
+  }
+  @media (max-width: 600px) and (min-width: 481px) {
+    #site-wrapper { transform: translateX(-50%) scale(0.54) !important; }
+  }
+  @media (max-width: 480px) {
+    #site-wrapper { transform: translateX(-50%) scale(0.47) !important; }
+  }
+  
+  /* === Header padding fix === */
+  @media (max-width: 600px) {
+    .top-bar { height: 24px; }
+    .navbar { top: 24px; }
+    .navbar ul { height: 56px; gap: 12px; padding: 0 12px; }
+    body { padding-top: calc(24px + 56px) !important; }
+  }
+  @media (min-width: 601px) and (max-width: 900px) {
+    .top-bar { height: 30px; }
+    .navbar { top: 30px; }
+    .navbar ul { height: 62px; gap: 14px; padding: 0 18px; }
+    body { padding-top: calc(30px + 62px) !important; }
+  }
+  

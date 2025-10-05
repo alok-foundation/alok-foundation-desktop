@@ -1,232 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alok Foundation</title>
-    <link rel="icon" type="image/jpeg" href="logo.jpeg">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=1024, initial-scale=0.3, user-scalable=yes">
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <!-- single correct viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alok Foundation</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-    <!-- Single header for all sections -->
-    <header>
-        <div class="top-bar"></div>
-        <nav class="navbar">
-            <ul>
-                <li class="logo">
-                    <a href="#"><img src="logo.jpeg" alt="Logo" /></a>
-                </li>
-                <li><a href="#" id="alk">Alok Foundation</a></li>
-                <li><a href="#hero" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#vision-mission" class="nav-link">Vision & Mission</a></li>
-                <li><a href="#projects" class="nav-link">Our Projects</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#volunteers" class="nav-link">Volunteers</a></li>
-                <li><a href="#contacts" class="nav-link">Contacts</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header (NOT scaled) -->
+  <header>
+    <div class="top-bar"></div>
+    <nav class="navbar">
+      <ul>
+        <li class="logo">
+          <a href="#"><img src="logo.jpeg" alt="Logo" /></a>
+        </li>
+        <li><a href="#" id="alk">Alok Foundation</a></li>
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#vision-mission" class="nav-link">Vision & Mission</a></li>
+        <li><a href="#projects" class="nav-link">Our Projects</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#volunteers" class="nav-link">Volunteers</a></li>
+        <li><a href="#contacts" class="nav-link">Contacts</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Main Content -->
+  <!-- Scaled content -->
+  <div id="site-wrapper">
     <main>
-        <!-- Hero Section -->
-        <section id="hero">
-            <div class="hero-section">
-                <div class="hero-text">
-                    <h1 id="heading">We Are Non Profit Charity Organization</h1>
-                    <h3 id="h3">Alok Foundation is a nationally registered NGO working towards education, healthcare, and environmental upliftment.</h3>
-                    <span id="button1" onclick="window.open(href='https://www.google.com','_blank')">About Us</span>
-                    <span id="button2" onclick="window.open(href='https://www.google.com','_blank')">Volunteer</span>
-                </div>
-                <div class="image-staggered-grid">
-                    <div class="img-wrapper left-tall"><img src="image1.jpg" alt="Tall Left Image" /></div>
-                    <div class="img-wrapper right-top-1"><img src="image1.jpg" alt="Top Right 1" /></div>
-                    <div class="img-wrapper right-top-2"><img src="image1.jpg" alt="Top Right 2" /></div>
-                    <div class="img-wrapper right-mid"><img src="image1.jpg" alt="Middle Right Image" /></div>
-                    <div class="img-wrapper right-bottom-small"><img src="image1.jpg" alt="Bottom Right Image" /></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about-section" id="about">
-          <h2 class="about-title">About Us!</h2>
-          <div class="image-box">
-              <div class="img first-image">
-                  <div class="hover-text">
-                      <h3>Who We Are?</h3>
-                      <p>Alok Foundation a non-profit organization uplifts underprivileged children through education, healthcare, and development programs.</p>
-                  </div>
-              </div>
-              <div class="img second-image">
-                  <div class="hover-text">
-                      <h3>Our Belief</h3>
-                      <p>Quote from Sushmita Sen: "Don’t worry, the world will change on its own, you change one life, one thought."</p>
-                  </div>
-              </div>
-              <div class="img third-image">
-                  <div class="hover-text">
-                      <h3>Core Values</h3>
-                      <p>Transparency, Compassion, Integrity, Community Upliftment</p>
-                  </div>
-              </div>
-              <div class="img forth-image">
-                  <div class="hover-text">
-                      <h3>Our Team</h3>
-                      <p>Social workers, educationists, volunteers, and trustees</p>
-                  </div>
-              </div>
+      <!-- Hero Section -->
+      <section id="hero">
+        <div class="hero-section">
+          <div class="hero-text">
+            <h1 id="heading">We Are Non Profit Charity Organization</h1>
+            <h3 id="h3">Alok Foundation is a nationally registered NGO working towards education, healthcare, and environmental upliftment.</h3>
+            <span id="button1" onclick="window.open('https://www.google.com','_blank')">About Us</span>
+            <span id="button2" onclick="window.open('https://www.google.com','_blank')">Volunteer</span>
           </div>
-        </section>
+          <div class="image-staggered-grid">
+            <div class="img-wrapper left-tall"><img src="image1.jpg" alt="Tall Left Image" /></div>
+            <div class="img-wrapper right-top-1"><img src="image1.jpg" alt="Top Right 1" /></div>
+            <div class="img-wrapper right-top-2"><img src="image1.jpg" alt="Top Right 2" /></div>
+            <div class="img-wrapper right-mid"><img src="image1.jpg" alt="Middle Right Image" /></div>
+            <div class="img-wrapper right-bottom-small"><img src="image1.jpg" alt="Bottom Right Image" /></div>
+          </div>
+        </div>
+      </section>
 
-    
-        <!-- Vision & Mission Section -->
-        <section class="vision-mission-section" id="vision-mission">
-            <div class="vision-gathering">
-                <div class="image-container">
-                    <img src="nik.jpg" alt="Vision Image" />
-               </div>
-                <div >
-                <div class="text">
-                <h4>Vision</h4>
-                </div>
-                <div class="text2">
-                    <p id="p1">“Spreading Light of Education”  </p> 
-                    <p id="p2">When ordinary kids are empowered with education, they can do extraordinary things.</p>
-                </div>
-               </div>
-            </div>
-            <hr class="straight-line">
-            <div class="mission-gathering">
-                <div class="text3">
-                    <h4>Mission</h4>
-                </div>
-                <div class="text4">
-                    <p id="p1">“Empowering Communities Through Education”</p>
-                    <p id="p2">Help kids build strong educational foundations for a brighter future.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="project-section" id="projects">
-          <div class="project-container">
-            <div id="box2">
-                <h2 id="hii">Project 01:</h2>
-                <h2 id="hello">Build a Foundation Program</h2>
-            </div>
-            <div id="box3">
-                <div id="multi-color-container">
-                    <h2 id="multi-color-text1">
-                        <span class="color1">Location:</span>
-                        <span class="color2">Uttam Nagar, Delhi</span>
-                    </h2>
-                    <h2 id="multi-color-text1">
-                        <span class="color1">What We Do:</span>
-                        <span class="color2">Teach 1st–6th grade kids basic subjects (Hindi, English, Math)</span>
-                    </h2>
-                    <h2 id="multi-color-text1">
-                        <span class="color1">Other Activities:</span>
-                        <span class="color2">Moral classes, birthday celebrations, tests & rewards</span>
-                    </h2>
-                    <h2 id="multi-color-text1">
-                        <span class="color1">Outcome:</span>
-                        <span class="color2">Academic improvement, values, confidence</span>
-                    </h2>
-                </div>
+      <!-- About Section -->
+      <section class="about-section" id="about">
+        <h2 class="about-title">About Us!</h2>
+        <div class="image-box">
+          <div class="img first-image">
+            <div class="hover-text">
+              <h3>Who We Are?</h3>
+              <p>Alok Foundation a non-profit organization uplifts underprivileged children through education, healthcare, and development programs.</p>
             </div>
           </div>
-            <div id="box4"> 
-                <div class="container">
-                    <div class="section">
-                      <h2>Senior Citizen Home</h2>
-                      <p>Plan to create “Second Inning Home” for abandoned elders in Delhi/NCR</p>
-                    </div>
-                
-                    <div class="section">
-                      <h2>Blood Helpline</h2>
-                      <p>Set up an 8 AM–8 PM emergency donor helpline.<br />
-                      Goal: Register 1000+ donors in Delhi/NCR</p>
-                    </div>
-                
-                    <div class="section">
-                      <h2>Environment Drive</h2>
-                      <p>Plant 1000+ trees in schools<br />
-                      Adopt-a-tree program by students/teachers</p>
-                    </div>
-                  </div>
+          <div class="img second-image">
+            <div class="hover-text">
+              <h3>Our Belief</h3>
+              <p>Quote from Sushmita Sen: "Don’t worry, the world will change on its own, you change one life, one thought."</p>
             </div>
-        </section>
-
-        <section class="gallery-section" id="gallery">
-            <div id="box5">Gallery</div>
-              <div id="box6">
-                <div id="img1">
-                    <img src=nikh.png alt="Image 1"/>
-                    <img src=nikh.png alt="Image 1"/>
-                    <img src=nikh.png alt="Image 1"/>
-                </div>
+          </div>
+          <div class="img third-image">
+            <div class="hover-text">
+              <h3>Core Values</h3>
+              <p>Transparency, Compassion, Integrity, Community Upliftment</p>
             </div>
-        </section>
-
-        <section class="volunteer-section" id="volunteers">
-            <div class="volunteer-boxes">
-                    <div id="vbox1">
-                        <p id="p1">Corporate Social Responsibility</p>
-                        <p id="p2">We welcome partnerships and CSR collaborations. Transparent reporting assured.</p>
-                    </div>
-                    <div id="vbox2">
-                        <p id="p1">Volunteer With Us!</p>
-                        <p id="p2">Teach kids every Saturday, celebrate with them, or be their mentor.</p>
-                    </div>
-                     <div id="vbox3">
-                        <p id="p1">Visit Our Centers</p>
-                        <p id="p2">Come see the impact we’re making we’re fully transparent.</p>
-                     </div>
-                    <div id="vbox4">
-                        <p id="p1">Donate!</p>
-                        <p id="p2">Support our centers, sponsor a child, or donate notebooks and stationery.</p>
-                    </div> 
-                </div>
-            <div class="volunteer-text">
-                <h2>make a difference, one act of kindness at a time</h2>
-                <span id="join" onclick="window.open(href='https://www.google.com','_blank')">Join us!</span>
+          </div>
+          <div class="img forth-image">
+            <div class="hover-text">
+              <h3>Our Team</h3>
+              <p>Social workers, educationists, volunteers, and trustees</p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="contact-section" id="contacts">
-            <div class="contact-container">
-                <img src="logo.jpeg" alt="Logo" id="contact-logo">
+      <!-- Vision & Mission Section -->
+      <section class="vision-mission-section" id="vision-mission">
+        <div class="vision-gathering">
+          <div class="image-container">
+            <img src="nik.jpg" alt="Vision Image" />
+          </div>
+          <div>
+            <div class="text">
+              <h4>Vision</h4>
             </div>
-                <div id="page-info">
-                    <h4 id="explore">Explore</h4>
-                    <a id="about2" href="#about" >About us</a>
-                    <a id="vm" href="#vision-mission" >Vission And Mission</a>
-                    <a id="op" href="#projects" >Our Projects</a>
-                    <a id="gal" href="#gallery">Gallery</a>
-                    <a id="vol" href="#volunteers">Volunteers</a>
-                </div>
-                <div id="contact-info">
-                    <h4 id="contact">Contact Us</h4>
-                    <a id="phone" href="tel:+1234567890">Phone: +1234567890</a>
-                    <a id="email" href="mailto:n688502@gmail.com">Email</a>
-                </div>
-                <div id="location">
-                    <h4 id="location-title">Location</h4>
-                    <iframe 
-                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.4194154846819!3d37.77492977975961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064df5b4b3b%3A0x8c3f4e5c6e8b9d9!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1696600000000!5m2!1sen!2sin" 
-                        width="250" 
-                        height="250" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade" id="map" ></iframe>
-                </div>
-        </section>
+            <div class="text2">
+              <p id="p1">“Spreading Light of Education”</p>
+              <p id="p2">When ordinary kids are empowered with education, they can do extraordinary things.</p>
+            </div>
+          </div>
+        </div>
+        <hr class="straight-line" />
+        <div class="mission-gathering">
+          <div class="text3">
+            <h4>Mission</h4>
+          </div>
+          <div class="text4">
+            <p id="p1">“Empowering Communities Through Education”</p>
+            <p id="p2">Help kids build strong educational foundations for a brighter future.</p>
+          </div>
+        </div>
+      </section>
 
+      <!-- Projects -->
+      <section class="project-section" id="projects">
+        <div class="project-container">
+          <div id="box2">
+            <h2 id="hii">Project 01:</h2>
+            <h2 id="hello">Build a Foundation Program</h2>
+          </div>
+          <div id="box3">
+            <div id="multi-color-container">
+              <h2 id="multi-color-text1">
+                <span class="color1">Location:</span>
+                <span class="color2">Uttam Nagar, Delhi</span>
+              </h2>
+              <h2 id="multi-color-text1">
+                <span class="color1">What We Do:</span>
+                <span class="color2">Teach 1st–6th grade kids basic subjects (Hindi, English, Math)</span>
+              </h2>
+              <h2 id="multi-color-text1">
+                <span class="color1">Other Activities:</span>
+                <span class="color2">Moral classes, birthday celebrations, tests & rewards</span>
+              </h2>
+              <h2 id="multi-color-text1">
+                <span class="color1">Outcome:</span>
+                <span class="color2">Academic improvement, values, confidence</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div id="box4">
+          <div class="container">
+            <div class="section">
+              <h2>Senior Citizen Home</h2>
+              <p>Plan to create “Second Inning Home” for abandoned elders in Delhi/NCR</p>
+            </div>
+            <div class="section">
+              <h2>Blood Helpline</h2>
+              <p>Set up an 8 AM–8 PM emergency donor helpline.<br />
+                Goal: Register 1000+ donors in Delhi/NCR</p>
+            </div>
+            <div class="section">
+              <h2>Environment Drive</h2>
+              <p>Plant 1000+ trees in schools<br />
+                Adopt-a-tree program by students/teachers</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="gallery-section" id="gallery">
+        <div id="box5">Gallery</div>
+        <div id="box6">
+          <div id="img1">
+            <img src="nikh.png" alt="Image 1" />
+            <img src="nikh.png" alt="Image 1" />
+            <img src="nikh.png" alt="Image 1" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Volunteers -->
+      <section class="volunteer-section" id="volunteers">
+        <div class="volunteer-boxes">
+          <div id="vbox1">
+            <p id="p1">Corporate Social Responsibility</p>
+            <p id="p2">We welcome partnerships and CSR collaborations. Transparent reporting assured.</p>
+          </div>
+          <div id="vbox2">
+            <p id="p1">Volunteer With Us!</p>
+            <p id="p2">Teach kids every Saturday, celebrate with them, or be their mentor.</p>
+          </div>
+          <div id="vbox3">
+            <p id="p1">Visit Our Centers</p>
+            <p id="p2">Come see the impact we’re making we’re fully transparent.</p>
+          </div>
+          <div id="vbox4">
+            <p id="p1">Donate!</p>
+            <p id="p2">Support our centers, sponsor a child, or donate notebooks and stationery.</p>
+          </div>
+        </div>
+        <div class="volunteer-text">
+          <h2>make a difference, one act of kindness at a time</h2>
+          <span id="join" onclick="window.open('https://www.google.com','_blank')">Join us!</span>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="contact-section" id="contacts">
+        <div class="contact-container">
+          <img src="logo.jpeg" alt="Logo" id="contact-logo">
+        </div>
+        <div id="page-info">
+          <h4 id="explore">Explore</h4>
+          <a id="about2" href="#about">About us</a>
+          <a id="vm" href="#vision-mission">Vission And Mission</a>
+          <a id="op" href="#projects">Our Projects</a>
+          <a id="gal" href="#gallery">Gallery</a>
+          <a id="vol" href="#volunteers">Volunteers</a>
+        </div>
+        <div id="contact-info">
+          <h4 id="contact">Contact Us</h4>
+          <a id="phone" href="tel:+1234567890">Phone: +1234567890</a>
+          <a id="email" href="mailto:n688502@gmail.com">Email</a>
+        </div>
+        <div id="location">
+          <h4 id="location-title">Location</h4>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.4194154846819!3d37.77492977975961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064df5b4b3b%3A0x8c3f4e5c6e8b9d9!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1696600000000!5m2!1sen!2sin"
+            width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" id="map"></iframe>
+        </div>
+      </section>
     </main>
+  </div>
+
+  <div id="mobile-block-message">
+    <div class="block-card">
+      <div class="icon">🚫</div>
+      <h2>Site not available on Mobile</h2>
+      <p>Please open on a <strong>desktop</strong> for the best experience.</p>
+      <a href="https://www.google.com/" class="volunteer-btn" target="_blank">
+        Volunteer Form
+      </a>
+      <a href="enquiry-form.html" class="volunteer-btn">Enquiry Form</a>
+      <a href="donation-form.html" class="volunteer-btn">Donation Form</a>
+      <a href="contact.html" class="volunteer-btn">Contact Information</a>
+    </div>
+  </div>
+  
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.innerWidth <= 1024) {
+        document.getElementById("site-wrapper")?.remove();
+        document.querySelector("header")?.remove();
+        document.querySelector("footer")?.remove();
+        document.getElementById("mobile-block-message").style.display = "flex";
+      }
+    });
+  </script>  
+
+  <script>
+    (function(){
+      function checkScreen(){
+        if (window.matchMedia("(max-width: 900px)").matches) {
+          if (!location.pathname.includes("mobile.html")) {
+            location.replace("mobile.html");
+          }
+        } else {
+          if (!location.pathname.includes("index.html")) {
+            location.replace("index.html");
+          }
+        }
+      }
+    
+      // Run on load
+      checkScreen();
+    
+      // Run on resize or rotate
+      window.addEventListener("resize", checkScreen);
+      window.addEventListener("orientationchange", checkScreen);
+    })();
+    </script>
+    
+  
 </body>
 </html>

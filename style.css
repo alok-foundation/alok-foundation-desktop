@@ -1215,59 +1215,132 @@ transition: all 0.5s ease;
     z-index: 1;
 }
 
+@media (min-width: 1025px) {
+    #site-wrapper {
+      position: static !important;
+      transform: none !important;
+      width: auto !important;
+      margin: 0 auto !important;
+      left: auto !important;
+    }
+  }
+  
+  /* === Desktop: keep as-is === */
+@media (min-width: 1025px) {
+    #site-wrapper {
+      position: static !important;
+      transform: none !important;
+      width: auto !important;
+      margin: 0 auto !important;
+      left: auto !important;
+    }
+  }
+  
+  /* === Mobile/Tablet: hide site and show block message === */
+  @media (max-width: 1024px) {
+    #site-wrapper,
+    header,
+    footer {
+      display: none !important;
+    }
+  
+    #mobile-block-message {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      font-family: Inter, sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #3B6455;
+      background: #F8C007;
+      padding: 20px;
+    }
+  }
 
-  
-/* ✅ Mobile Zoom-Out with Fixes */
-@media screen and (max-width: 600px) {
-    body {
-      transform: scale(0.3);                
-      transform-origin: 0 0;                
-      width: calc(100vw / 0.3);            
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;     
-    }
-  
-    /* ✅ Fix animations slightly delayed on mobile */
-    .animated-element, .fade-in, .slide-up {
-      will-change: transform, opacity;     
-      animation-delay: 0s !important;       
-      animation-duration: 0.5s !important;  /* Optional: speed up */
-    }
-  
-    /* ✅ Optional: Reduce padding/margin on mobile sections */
-    .section, .container, .content-block {
-      padding: 10px !important;
-      margin: 5px 0 !important;
-    }
-  }
-  
-  html {
-    overflow-x: hidden;
-}
-  
 
-@media screen and (max-width: 1350px) and (min-width: 1200px) {
-    .site-wrapper {
-      transform: scale(0.9);
-      transform-origin: top center;
+/* Hidden by default */
+#mobile-block-message {
+    display: none;
+  }
+  
+  /* Only show on <=1024px screens */
+  @media (max-width: 1024px) {
+    #site-wrapper,
+    header,
+    footer {
+      display: none !important;
+    }
+  
+    #mobile-block-message {
+      display: flex !important;
+      justify-content: center;
+      align-items: flex-start;   /* box ko upar le aane ke liye */
+      height: 100vh;
+      width: 100%;
+      background: linear-gradient(135deg, #F8C007, #FFD84D);
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      padding: 30px 20px;
+    }
+  
+    .block-card {
+      background: #fff;
+      padding: 20px 20px;
+      border-radius: 16px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      max-width: 250px;
+      margin-top: 170px; /* 👈 thoda upar se offset */
+      animation: zoomIn 0.6s ease;
+      transform: translateX(-17px);
+    }
+  
+    .block-card .icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+  
+    .block-card h2 {
+      font-size: 24px;
+      color: #3B6455;
+      margin-bottom: 10px;
+    }
+  
+    .block-card p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+  
+    /* Button Styling */
+    .volunteer-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #3B6455;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s ease;
+      margin-bottom: 15px;
+    }
+  
+    .volunteer-btn:hover {
+      background: #222;
+      color: #F8C007;
+    }
+  
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   }
   
-  @media screen and (max-width: 1200px) and (min-width: 1024px) {
-    .site-wrapper {
-      transform: scale(0.8);
-      transform-origin: top center;
-    }
-  }
-  
-  @media screen and (max-width: 1024px) and (min-width: 900px) {
-    .site-wrapper {
-      transform: scale(0.7);
-      transform-origin: top center;
-    }
-  }
-  
-  /* Optional: Prevent scrollbars due to scale */
-  body {
-    overflow-x: hidden;
-  }
