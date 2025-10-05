@@ -9,6 +9,9 @@
   <link rel="icon" type="image/jpeg" href="logo.jpeg" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link rel="canonical" href="https://alok-foundation.github.io/alok-foundation-desktop/" />
+   <link rel="alternate" media="only screen and (max-width: 640px)"
+        href="https://alok-foundation.github.io/alok-foundation-mobile/" />
 </head>
 <body>
 
@@ -18,9 +21,9 @@
     <nav class="navbar">
       <ul>
         <li class="logo">
-          <a href="#"><img src="logo.jpeg" alt="Logo" /></a>
+          <a href="https://alok-foundation.github.io/alok-foundation-desktop/"><img src="logo.jpeg" alt="Logo" /></a>
         </li>
-        <li><a href="#" id="alk">Alok Foundation</a></li>
+        <li><a href="https://alok-foundation.github.io/alok-foundation-desktop/" id="alk">Alok Foundation</a></li>
         <li><a href="#hero" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#vision-mission" class="nav-link">Vision & Mission</a></li>
@@ -226,58 +229,11 @@
         </div>
       </section>
     </main>
-  </div>
-
-  <div id="mobile-block-message">
-    <div class="block-card">
-      <div class="icon">🚫</div>
-      <h2>Site not available on Mobile</h2>
-      <p>Please open on a <strong>desktop</strong> for the best experience.</p>
-      <a href="https://www.google.com/" class="volunteer-btn" target="_blank">
-        Volunteer Form
-      </a>
-      <a href="enquiry-form.html" class="volunteer-btn">Enquiry Form</a>
-      <a href="donation-form.html" class="volunteer-btn">Donation Form</a>
-      <a href="contact.html" class="volunteer-btn">Contact Information</a>
-    </div>
-  </div>
-  
-  
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      if (window.innerWidth <= 1024) {
-        document.getElementById("site-wrapper")?.remove();
-        document.querySelector("header")?.remove();
-        document.querySelector("footer")?.remove();
-        document.getElementById("mobile-block-message").style.display = "flex";
-      }
-    });
-  </script>  
-
-  <script>
-    (function(){
-      function checkScreen(){
-        if (window.matchMedia("(max-width: 900px)").matches) {
-          if (!location.pathname.includes("mobile.html")) {
-            location.replace("mobile.html");
-          }
-        } else {
-          if (!location.pathname.includes("index.html")) {
-            location.replace("index.html");
-          }
-        }
-      }
-    
-      // Run on load
-      checkScreen();
-    
-      // Run on resize or rotate
-      window.addEventListener("resize", checkScreen);
-      window.addEventListener("orientationchange", checkScreen);
-    })();
-    </script>
-    
-  
+  </div>   
+  <footer class="footer">
+  <a href="https://alok-foundation.github.io/alok-foundation-mobile/">
+    Switch to Mobile Version
+  </a>
+</footer>
 </body>
 </html>
