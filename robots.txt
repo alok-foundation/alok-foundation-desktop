@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alok-foundation.github.io/alok-foundation-desktop/sitemap.xml
