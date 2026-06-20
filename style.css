@@ -218,11 +218,11 @@ text-transform: capitalize;
 }
 
 /* 🔶 MIDDLE RIGHT (Slightly smaller than top) */
-.right-mid {
-    width: 180px;
-    height: 270px;
-    top: 350px;                    /* ➤ Pushes this image way down (near bottom) */
-    left: 115px;                   /* ➤ Aligned with .right-top-1 */
+.right-mid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 80% center;  /* try 70%, 80%, 90% */
 }
 
 /* 🔸 BOTTOM RIGHT SMALL (moved up & left) */
