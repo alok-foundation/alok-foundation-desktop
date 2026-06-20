@@ -1216,14 +1216,17 @@ transition: all 0.5s ease;
 }
 
 /* === Footer (Switch to Mobile Version link) === */
+/* === Footer (Switch to Mobile Version link) === */
 .footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
     width: 100%;
     text-align: center;
     padding: 25px 0;
     background-color: #1F2933;
     margin-top: 50px;
 }
-
 .footer a {
     color: #F8C007;
     font-family: 'Inter', sans-serif;
@@ -1232,7 +1235,6 @@ transition: all 0.5s ease;
     text-decoration: none;
     transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
-
 .footer a:hover {
     color: #FFFFFF;
     text-decoration: underline;
