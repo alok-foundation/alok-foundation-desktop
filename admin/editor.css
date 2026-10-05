@@ -1,0 +1,90 @@
+/* On-page editor (admins only). Everything is prefixed with ae- so it never clashes with the site. */
+body.ae-editing { padding-bottom: 76px; }
+
+#ae-layer { position: fixed; inset: 0; pointer-events: none; z-index: 60; }
+.ae-photo-group { position: fixed; display: flex; gap: 6px; pointer-events: auto; }
+.ae-photo-btn, .ae-reset-btn {
+  border: 0; cursor: pointer; font: 600 13px/1 Inter, system-ui, sans-serif; color: #1F2933;
+  background: #F8C007; border-radius: 999px; padding: 8px 12px; box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
+  white-space: nowrap;
+}
+.ae-reset-btn { background: #fff; padding: 8px 10px; }
+.ae-photo-btn:hover { background: #FFD84D; }
+.ae-photo-btn:disabled { opacity: .8; cursor: progress; }
+.ae-small .ae-photo-btn { font-size: 0; padding: 7px 9px; }
+.ae-small .ae-photo-btn::before { content: "📷"; font-size: 14px; }
+
+#ae-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  padding: 10px clamp(12px, 3vw, 28px) calc(10px + env(safe-area-inset-bottom, 0px));
+  background: #1F2933; color: #fff; box-shadow: 0 -8px 24px rgba(0, 0, 0, .25);
+  font-family: Inter, system-ui, sans-serif;
+}
+.ae-bar-title { font-weight: 800; }
+.ae-bar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.ae-bar-actions button { border: 0; cursor: pointer; font: 600 14px/1 Inter, system-ui, sans-serif; border-radius: 999px; padding: 11px 16px; background: #F8C007; color: #1F2933; }
+.ae-bar-actions .ae-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255, 255, 255, .4); }
+.ae-bar-actions .ae-publish { background: #22C55E; color: #fff; font-weight: 800; }
+.ae-bar-actions .ae-publish:disabled { background: rgba(255, 255, 255, .12); color: rgba(255, 255, 255, .6); cursor: default; }
+.ae-status { font-weight: 600; font-size: 13px; color: #FFD84D; margin-left: 6px; }
+@media (max-width: 640px) { .ae-bar-title { font-size: 13px; } .ae-bar-actions { width: 100%; } .ae-bar-actions button { flex: 1 1 auto; padding: 10px 8px; font-size: 13px; } .ae-bar-actions .ae-publish { flex-basis: 100%; order: -1; } }
+body.ae-editing { padding-bottom: 150px; }
+
+.ae-inline-wrap { margin-bottom: 20px; }
+.ae-center { text-align: center; margin: -12px 0 24px; }
+.ae-inline-btn { border: 2px dashed #F8C007; background: rgba(248, 192, 7, .12); color: inherit; font: 700 14px/1 Inter, system-ui, sans-serif; border-radius: 12px; padding: 12px 16px; cursor: pointer; }
+
+#ae-toast {
+  position: fixed; left: 50%; bottom: 92px; transform: translate(-50%, 20px); z-index: 90;
+  max-width: min(92vw, 460px); padding: 12px 18px; border-radius: 14px; background: #fff; color: #1F2933;
+  font: 600 14px/1.4 Inter, system-ui, sans-serif; box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+  opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s;
+}
+#ae-toast.show { opacity: 1; transform: translate(-50%, 0); }
+#ae-toast.error { background: #FDECEC; color: #B42318; }
+
+.ae-backdrop { position: fixed; inset: 0; z-index: 100; background: rgba(15, 23, 32, .55); display: grid; place-items: center; padding: 16px; }
+.ae-dialog {
+  width: 100%; max-width: 560px; max-height: calc(100vh - 32px); overflow: auto;
+  background: #fff; color: #1F2933; border-radius: 20px; padding: 22px; font-family: Inter, system-ui, sans-serif;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+}
+.ae-dialog-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.ae-dialog-head h2 { font-size: 1.3rem; font-weight: 800; }
+.ae-x { border: 0; background: #F1F5FA; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 16px; }
+.ae-form { display: grid; gap: 14px; }
+.ae-field { display: grid; gap: 5px; }
+.ae-field span { font-weight: 700; font-size: .92rem; }
+.ae-field input { height: 46px; border: 1.5px solid #D5DEE8; border-radius: 10px; padding: 0 12px; font: inherit; color: #1F2933; }
+.ae-field input:focus { outline: none; border-color: #30608B; box-shadow: 0 0 0 3px rgba(48, 96, 139, .18); }
+.ae-field small { color: #5B6B7B; }
+.ae-map-preview { width: 100%; height: 180px; border: 0; border-radius: 12px; margin-top: 14px; background: #EEF3F8; }
+.ae-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; position: sticky; bottom: -22px; background: #fff; padding: 12px 0 2px; }
+.ae-btn { border: 0; cursor: pointer; font: 700 15px/1 Inter, system-ui, sans-serif; border-radius: 999px; padding: 13px 22px; }
+.ae-btn-primary { background: #1F2933; color: #fff; }
+.ae-btn-primary:disabled { opacity: .6; }
+.ae-btn-ghost { background: #F1F5FA; color: #1F2933; }
+.ae-help { color: #5B6B7B; margin-bottom: 12px; }
+.ae-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.ae-thumb { margin: 0; border-radius: 12px; overflow: hidden; background: #F1F5FA; }
+.ae-thumb img { width: 100%; height: 100px; object-fit: cover; }
+.ae-thumb figcaption { display: flex; justify-content: space-between; padding: 6px; }
+.ae-thumb button { border: 0; background: #fff; border-radius: 8px; width: 36px; height: 32px; cursor: pointer; font-size: 15px; }
+.ae-thumb button:disabled { opacity: .35; cursor: default; }
+.ae-thumb .ae-del { color: #B42318; }
+.ae-add { min-height: 136px; border: 2px dashed #9FB3C8; border-radius: 12px; background: #fff; font: 700 14px Inter, system-ui, sans-serif; color: #30608B; cursor: pointer; }
+
+/* Editable texts and buttons */
+.ae-editable { outline: 2px dashed transparent; outline-offset: 4px; border-radius: 6px; transition: outline-color .15s, background-color .15s; cursor: text; }
+.ae-editable:hover { outline-color: rgba(248, 192, 7, .85); }
+.ae-editable:focus { outline: 2px solid #F8C007; background: rgba(248, 192, 7, .14); }
+.ae-saving { opacity: .6; }
+.ae-link-editable { position: relative; outline: 2px dashed rgba(255, 255, 255, .8); outline-offset: 3px; }
+.ae-link-editable::after { content: "✏️"; position: absolute; top: -12px; right: -12px; width: 26px; height: 26px; display: grid; place-items: center; font-size: 13px; background: #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0, 0, 0, .25); }
+/* While editing, show the About texts that normally appear only on hover. */
+body.ae-editing .about-body p { max-height: none !important; opacity: 1 !important; display: block !important; }
+body.ae-editing .about-card::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0) 15%, rgba(13, 22, 32, .95) 100%); }
+
+.ae-error { background: #FDECEC; color: #B42318; border-radius: 10px; padding: 10px 12px; font-size: .92rem; }
+.ae-error[hidden] { display: none; }

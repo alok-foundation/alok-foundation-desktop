@@ -7,8 +7,9 @@
   <title>Alok Foundation — Spreading the Light of Education</title>
   <meta name="description" content="Alok Foundation is a nationally registered NGO in Delhi working towards education, healthcare and environmental upliftment for underprivileged children." />
   <meta name="theme-color" content="#30608B" />
+  <meta name="site-version" content="initial" />
   <link rel="canonical" href="https://alok-foundation.github.io/alok-foundation-desktop/" />
-  <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg" data-img-href="logo" />
   <link rel="apple-touch-icon" href="images/icon-192.png" />
   <meta property="og:title" content="Alok Foundation" />
   <meta property="og:description" content="Spreading the light of education — a non-profit NGO in Uttam Nagar, Delhi." />
@@ -25,7 +26,7 @@
     <div class="top-bar" aria-hidden="true"></div>
     <nav class="navbar container" aria-label="Main">
       <a class="brand" href="#hero">
-        <img src="images/logo.jpg" alt="" width="44" height="44" />
+        <img data-img="logo" src="images/logo.jpg" alt="" width="44" height="44" />
         <span>Alok Foundation</span>
       </a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
@@ -48,20 +49,20 @@
     <section id="hero" class="hero">
       <div class="container hero-grid">
         <div class="hero-text">
-          <p class="eyebrow">Registered NGO · Delhi</p>
-          <h1>We Are a Non&#8209;Profit Charity Organization</h1>
-          <p class="lead">Alok Foundation is a nationally registered NGO working towards education, healthcare, and environmental upliftment.</p>
+          <p data-edit="heroEyebrow" class="eyebrow">Registered NGO · Delhi</p>
+          <h1 data-edit="heroTitle">We Are a Non&#8209;Profit Charity Organization</h1>
+          <p data-edit="heroLead" class="lead">Alok Foundation is a nationally registered NGO working towards education, healthcare, and environmental upliftment.</p>
           <div class="btn-row">
-            <a class="btn btn-dark" href="#about">About Us</a>
-            <a class="btn btn-yellow" href="#volunteers">Volunteer</a>
+            <a data-link="btnAbout" class="btn btn-dark" href="#about">About Us</a>
+            <a data-link="btnVolunteer" class="btn btn-yellow" href="#volunteers">Volunteer</a>
           </div>
         </div>
         <div class="hero-photos" aria-label="Photos of children at our centre">
-          <img class="p1" src="images/hero-1.jpg" alt="Children celebrating at the centre" width="750" height="1000" fetchpriority="high" />
-          <img class="p2" src="images/hero-2.jpg" alt="Kids with a birthday cake" width="900" height="675" />
-          <img class="p3" src="images/hero-3.jpg" alt="Students in class" width="900" height="534" />
-          <img class="p4" src="images/hero-4.jpg" alt="Volunteer with a group of children" width="678" height="900" />
-          <img class="p5" src="images/hero-5.jpg" alt="Group photo of the children" width="900" height="675" />
+          <img class="p1" data-img="hero1" src="images/hero-1.jpg" alt="Children celebrating at the centre" width="750" height="1000" fetchpriority="high" />
+          <img class="p2" data-img="hero2" src="images/hero-2.jpg" alt="Kids with a birthday cake" width="900" height="675" />
+          <img class="p3" data-img="hero3" src="images/hero-3.jpg" alt="Students in class" width="900" height="534" />
+          <img class="p4" data-img="hero4" src="images/hero-4.jpg" alt="Volunteer with a group of children" width="678" height="900" />
+          <img class="p5" data-img="hero5" src="images/hero-5.jpg" alt="Group photo of the children" width="900" height="675" />
         </div>
       </div>
     </section>
@@ -69,34 +70,34 @@
     <!-- About -->
     <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title">About Us</h2>
+        <h2 data-edit="aboutTitle" class="section-title">About Us</h2>
         <div class="about-grid">
           <article class="about-card">
-            <img src="images/about-who.jpg" alt="" loading="lazy" width="531" height="900" />
+            <img data-img="aboutWho" src="images/about-who.jpg" alt="" loading="lazy" width="531" height="900" />
             <div class="about-body">
-              <h3>Who We Are?</h3>
-              <p>Alok Foundation, a non-profit organization, uplifts underprivileged children through education, healthcare, and development programs.</p>
+              <h3 data-edit="whoTitle">Who We Are?</h3>
+              <p data-edit="whoText">Alok Foundation, a non-profit organization, uplifts underprivileged children through education, healthcare, and development programs.</p>
             </div>
           </article>
           <article class="about-card">
-            <img src="images/about-belief.jpg" alt="" loading="lazy" width="531" height="900" />
+            <img data-img="aboutBelief" src="images/about-belief.jpg" alt="" loading="lazy" width="531" height="900" />
             <div class="about-body">
-              <h3>Our Belief</h3>
-              <p>“Don’t worry, the world will change on its own — you change one life, one thought.” — Sushmita Sen</p>
+              <h3 data-edit="beliefTitle">Our Belief</h3>
+              <p data-edit="beliefText">“Don’t worry, the world will change on its own — you change one life, one thought.” — Sushmita Sen</p>
             </div>
           </article>
           <article class="about-card">
-            <img src="images/about-values.jpg" alt="" loading="lazy" width="531" height="900" />
+            <img data-img="aboutValues" src="images/about-values.jpg" alt="" loading="lazy" width="531" height="900" />
             <div class="about-body">
-              <h3>Core Values</h3>
-              <p>Transparency, Compassion, Integrity, Community Upliftment.</p>
+              <h3 data-edit="valuesTitle">Core Values</h3>
+              <p data-edit="valuesText">Transparency, Compassion, Integrity, Community Upliftment.</p>
             </div>
           </article>
           <article class="about-card">
-            <img src="images/about-team.jpg" alt="" loading="lazy" width="531" height="900" />
+            <img data-img="aboutTeam" src="images/about-team.jpg" alt="" loading="lazy" width="531" height="900" />
             <div class="about-body">
-              <h3>Our Team</h3>
-              <p>Social workers, educationists, volunteers, and trustees.</p>
+              <h3 data-edit="teamTitle">Our Team</h3>
+              <p data-edit="teamText">Social workers, educationists, volunteers, and trustees.</p>
             </div>
           </article>
         </div>
@@ -107,19 +108,19 @@
     <section id="vision-mission" class="section">
       <div class="container vm-grid">
         <figure class="vm-photo">
-          <img src="images/vision.jpg" alt="Smiling children holding gifts at the centre" loading="lazy" width="995" height="1100" />
+          <img data-img="vision" src="images/vision.jpg" alt="Smiling children holding gifts at the centre" loading="lazy" width="995" height="1100" />
         </figure>
         <div class="vm-text">
           <div class="vm-block">
-            <h2>Vision</h2>
-            <p class="quote">“Spreading Light of Education”</p>
-            <p>When ordinary kids are empowered with education, they can do extraordinary things.</p>
+            <h2 data-edit="visionTitle">Vision</h2>
+            <p data-edit="visionQuote" class="quote">“Spreading Light of Education”</p>
+            <p data-edit="visionText">When ordinary kids are empowered with education, they can do extraordinary things.</p>
           </div>
           <hr />
           <div class="vm-block">
-            <h2>Mission</h2>
-            <p class="quote">“Empowering Communities Through Education”</p>
-            <p>Help kids build strong educational foundations for a brighter future.</p>
+            <h2 data-edit="missionTitle">Mission</h2>
+            <p data-edit="missionQuote" class="quote">“Empowering Communities Through Education”</p>
+            <p data-edit="missionText">Help kids build strong educational foundations for a brighter future.</p>
           </div>
         </div>
       </div>
@@ -128,31 +129,31 @@
     <!-- Projects -->
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title">Our Projects</h2>
+        <h2 data-edit="projectsTitle" class="section-title">Our Projects</h2>
         <div class="projects-grid">
           <article class="card card-dark project-main">
-            <p class="tag">Project 01</p>
-            <h3>Build a Foundation Program</h3>
+            <p data-edit="project1Tag" class="tag">Project 01</p>
+            <h3 data-edit="project1Title">Build a Foundation Program</h3>
             <dl class="facts">
-              <div><dt>Location</dt><dd>Uttam Nagar, Delhi</dd></div>
-              <div><dt>What we do</dt><dd>Teach 1st–6th grade kids basic subjects (Hindi, English, Math)</dd></div>
-              <div><dt>Other activities</dt><dd>Moral classes, birthday celebrations, tests &amp; rewards</dd></div>
-              <div><dt>Outcome</dt><dd>Academic improvement, values, confidence</dd></div>
+              <div><dt data-edit="p1LocationLabel">Location</dt><dd data-edit="p1Location">Uttam Nagar, Delhi</dd></div>
+              <div><dt data-edit="p1WhatLabel">What we do</dt><dd data-edit="p1What">Teach 1st–6th grade kids basic subjects (Hindi, English, Math)</dd></div>
+              <div><dt data-edit="p1OtherLabel">Other activities</dt><dd data-edit="p1Other">Moral classes, birthday celebrations, tests &amp; rewards</dd></div>
+              <div><dt data-edit="p1OutcomeLabel">Outcome</dt><dd data-edit="p1Outcome">Academic improvement, values, confidence</dd></div>
             </dl>
           </article>
           <article class="card card-dark project-list">
-            <p class="tag">Coming next</p>
+            <p data-edit="nextTag" class="tag">Coming next</p>
             <div class="upcoming">
-              <h3>Senior Citizen Home</h3>
-              <p>Plan to create a “Second Inning Home” for abandoned elders in Delhi/NCR.</p>
+              <h3 data-edit="next1Title">Senior Citizen Home</h3>
+              <p data-edit="next1Text">Plan to create a “Second Inning Home” for abandoned elders in Delhi/NCR.</p>
             </div>
             <div class="upcoming">
-              <h3>Blood Helpline</h3>
-              <p>An 8 AM–8 PM emergency donor helpline. Goal: register 1000+ donors in Delhi/NCR.</p>
+              <h3 data-edit="next2Title">Blood Helpline</h3>
+              <p data-edit="next2Text">An 8 AM–8 PM emergency donor helpline. Goal: register 1000+ donors in Delhi/NCR.</p>
             </div>
             <div class="upcoming">
-              <h3>Environment Drive</h3>
-              <p>Plant 1000+ trees in schools, with an adopt-a-tree programme for students and teachers.</p>
+              <h3 data-edit="next3Title">Environment Drive</h3>
+              <p data-edit="next3Text">Plant 1000+ trees in schools, with an adopt-a-tree programme for students and teachers.</p>
             </div>
           </article>
         </div>
@@ -161,11 +162,11 @@
 
     <!-- Gallery -->
     <section id="gallery" class="gallery">
-      <div class="container"><h2 class="section-title">Gallery</h2></div>
+      <div class="container"><h2 data-edit="galleryTitle" class="section-title">Gallery</h2></div>
       <div class="marquee" aria-label="Photos from our centre">
-        <div class="marquee-track">
-          <img src="images/gallery-strip.jpg" alt="Collage of children and volunteers at Alok Foundation" loading="lazy" width="3000" height="956" />
-          <img src="images/gallery-strip.jpg" alt="" aria-hidden="true" loading="lazy" width="3000" height="956" />
+        <div class="marquee-track" data-gallery>
+          <img src="images/gallery-strip.jpg" alt="Photo 1 from Alok Foundation" loading="lazy" />
+          <img src="images/gallery-strip.jpg" alt="" aria-hidden="true" loading="lazy" />
         </div>
       </div>
     </section>
@@ -173,28 +174,28 @@
     <!-- Volunteers -->
     <section id="volunteers" class="section">
       <div class="container">
-        <h2 class="section-title">Get Involved</h2>
+        <h2 data-edit="involvedTitle" class="section-title">Get Involved</h2>
         <div class="vol-grid">
           <article class="vol-card card-dark">
-            <h3>Corporate Social Responsibility</h3>
-            <p>We welcome partnerships and CSR collaborations. Transparent reporting assured.</p>
+            <h3 data-edit="csrTitle">Corporate Social Responsibility</h3>
+            <p data-edit="csrText">We welcome partnerships and CSR collaborations. Transparent reporting assured.</p>
           </article>
           <article class="vol-card card-yellow">
-            <h3>Volunteer With Us!</h3>
-            <p>Teach kids every Saturday, celebrate with them, or be their mentor.</p>
+            <h3 data-edit="volTitle">Volunteer With Us!</h3>
+            <p data-edit="volText">Teach kids every Saturday, celebrate with them, or be their mentor.</p>
           </article>
           <article class="vol-card card-yellow">
-            <h3>Visit Our Centers</h3>
-            <p>Come see the impact we’re making — we’re fully transparent.</p>
+            <h3 data-edit="visitTitle">Visit Our Centers</h3>
+            <p data-edit="visitText">Come see the impact we’re making — we’re fully transparent.</p>
           </article>
           <article class="vol-card card-dark">
-            <h3>Donate!</h3>
-            <p>Support our centers, sponsor a child, or donate notebooks and stationery.</p>
+            <h3 data-edit="donateTitle">Donate!</h3>
+            <p data-edit="donateText">Support our centers, sponsor a child, or donate notebooks and stationery.</p>
           </article>
         </div>
         <div class="vol-cta">
-          <h2>Make a difference, one act of kindness at a time</h2>
-          <a class="btn btn-yellow btn-lg" href="#contacts">Join Us!</a>
+          <h2 data-edit="ctaTitle">Make a difference, one act of kindness at a time</h2>
+          <a data-link="btnJoin" class="btn btn-yellow btn-lg" href="#contacts">Join Us!</a>
         </div>
       </div>
     </section>
@@ -204,11 +205,11 @@
   <footer id="contacts" class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img src="images/logo.jpg" alt="Alok Foundation logo" width="120" height="120" loading="lazy" />
-        <p>Spreading the light of education in Uttam Nagar, Delhi.</p>
+        <img data-img="logo" src="images/logo.jpg" alt="Alok Foundation logo" width="120" height="120" loading="lazy" />
+        <p data-edit="footerTagline">Spreading the light of education in Uttam Nagar, Delhi.</p>
       </div>
       <nav class="footer-col" aria-label="Explore">
-        <h3>Explore</h3>
+        <h3 data-edit="exploreTitle">Explore</h3>
         <ul>
           <li><a href="#about">About Us</a></li>
           <li><a href="#vision-mission">Vision &amp; Mission</a></li>
@@ -218,20 +219,20 @@
         </ul>
       </nav>
       <div class="footer-col">
-        <h3>Contact Us</h3>
+        <h3 data-edit="contactTitle">Contact Us</h3>
         <ul>
-          <li><a href="tel:+919899617044">📞 +91 98996 17044</a></li>
-          <li><a href="mailto:n688502@gmail.com">✉️ n688502@gmail.com</a></li>
-          <li><a href="https://wa.me/919899617044" target="_blank" rel="noopener">💬 WhatsApp us</a></li>
+          <li><a data-href="tel" href="tel:+919899617044">📞 <span data-text="phone">+91 98996 17044</span></a></li>
+          <li><a data-href="mailto" href="mailto:n688502@gmail.com">✉️ <span data-text="email">n688502@gmail.com</span></a></li>
+          <li data-show="whatsapp"><a data-href="whatsapp" href="https://wa.me/919899617044" target="_blank" rel="noopener">💬 WhatsApp us</a></li>
         </ul>
       </div>
       <div class="footer-col footer-map">
-        <h3>Location</h3>
-        <iframe title="Map: Uttam Nagar, Delhi" src="https://maps.google.com/maps?q=Uttam%20Nagar%2C%20New%20Delhi&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a class="map-link" href="https://maps.google.com/?q=Uttam+Nagar,+New+Delhi" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+        <h3 data-edit="locationTitle">Location</h3>
+        <iframe data-map title="Map" src="https://maps.google.com/maps?q=Uttam%20Nagar%2C%20New%20Delhi&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="map-link" data-href="maplink" href="https://maps.google.com/?q=Uttam+Nagar,+New+Delhi" target="_blank" rel="noopener">Open in Google Maps ↗</a>
       </div>
     </div>
-    <p class="copyright">© <span id="year">2026</span> Alok Foundation. All rights reserved.</p>
+    <p class="copyright">© <span id="year">2026</span> Alok Foundation. All rights reserved. · <a class="admin-link" href="#admin" rel="nofollow">Admin login</a></p>
   </footer>
 
   <script>
@@ -250,6 +251,20 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
       window.addEventListener('resize', function () { if (window.innerWidth > 960) setOpen(false); });
       document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+  <script>
+    // Admin: "Admin login" (or opening the page with #admin) loads the editor. Visitors never download it.
+    (function () {
+      function loadEditor() {
+        if (window.__afEditor) return;
+        window.__afEditor = true;
+        var v = Date.now();
+        var css = document.createElement("link"); css.rel = "stylesheet"; css.href = "admin/editor.css?v=" + v; document.head.appendChild(css);
+        var js = document.createElement("script"); js.src = "admin/editor.js?v=" + v; document.body.appendChild(js);
+      }
+      document.querySelector(".admin-link").addEventListener("click", function (e) { e.preventDefault(); loadEditor(); });
+      if (location.hash === "#admin" || sessionStorage.getItem("af-admin-token")) loadEditor();
     })();
   </script>
 </body>

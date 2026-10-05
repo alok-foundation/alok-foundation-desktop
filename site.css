@@ -180,7 +180,7 @@ p { margin: 0; }
 .gallery { background: var(--navy); padding-block: clamp(48px, 8vw, 88px); }
 .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .marquee-track { display: flex; width: max-content; animation: marquee 60s linear infinite; }
-.marquee-track img { height: clamp(200px, 32vw, 380px); width: auto; max-width: none; }
+.marquee-track img { height: clamp(200px, 32vw, 380px); width: auto; max-width: none; margin-right: 14px; border-radius: 14px; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
