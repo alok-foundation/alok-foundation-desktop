@@ -263,7 +263,13 @@
         var css = document.createElement("link"); css.rel = "stylesheet"; css.href = "admin/editor.css?v=" + v; document.head.appendChild(css);
         var js = document.createElement("script"); js.src = "admin/editor.js?v=" + v; document.body.appendChild(js);
       }
-      document.querySelector(".admin-link").addEventListener("click", function (e) { e.preventDefault(); loadEditor(); });
+      function openAdmin(e) {
+        if (e) e.preventDefault();
+        if (window.__afOpenLogin) window.__afOpenLogin(); // editor already loaded: just show the login box again
+        else loadEditor();
+      }
+      document.querySelector(".admin-link").addEventListener("click", openAdmin);
+      window.addEventListener("hashchange", function () { if (location.hash === "#admin") openAdmin(); });
       if (location.hash === "#admin" || sessionStorage.getItem("af-admin-token")) loadEditor();
     })();
   </script>

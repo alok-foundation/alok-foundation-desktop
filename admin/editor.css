@@ -88,3 +88,7 @@ body.ae-editing .about-card::after { background: linear-gradient(180deg, rgba(0,
 
 .ae-error { background: #FDECEC; color: #B42318; border-radius: 10px; padding: 10px 12px; font-size: .92rem; }
 .ae-error[hidden] { display: none; }
+
+.ae-pass { position: relative; display: block; }
+.ae-pass input { width: 100%; padding-right: 48px; }
+.ae-eye { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 40px; height: 38px; border: 0; background: transparent; cursor: pointer; font-size: 18px; }

@@ -100,8 +100,11 @@
   function showLogin() {
     const err = h("p", { class: "ae-error", role: "alert", hidden: true });
     const form = h("form", { class: "ae-form", novalidate: true },
-      h("label", { class: "ae-field" }, h("span", {}, "Username"), h("input", { name: "username", autocomplete: "username", autocapitalize: "none", spellcheck: "false" })),
-      h("label", { class: "ae-field" }, h("span", {}, "Password"), h("input", { name: "password", type: "password", autocomplete: "current-password" })),
+      h("label", { class: "ae-field" }, h("span", {}, "Username"), h("input", { name: "username", autocomplete: "off", autocapitalize: "none", spellcheck: "false" })),
+      h("label", { class: "ae-field" }, h("span", {}, "Password"),
+        h("span", { class: "ae-pass" },
+          h("input", { name: "password", type: "password", autocomplete: "off", spellcheck: "false" }),
+          h("button", { type: "button", class: "ae-eye", "aria-label": "Show password", onclick: (e) => { const i = form.password; i.type = i.type === "password" ? "text" : "password"; e.currentTarget.textContent = i.type === "password" ? "👁" : "🙈"; } }, "👁"))),
       err);
     let busy = false;
     const submit = async (close, btn) => {
@@ -125,9 +128,18 @@
     dialog("Admin login", h("div", {}, h("p", { class: "ae-help" }, "Log in to edit texts, photos, buttons and contact details."), form), (close) => {
       const btn = h("button", { type: "submit", class: "ae-btn ae-btn-primary", onclick: () => submit(close, btn) }, "Log in");
       form.addEventListener("submit", (e) => { e.preventDefault(); submit(close, btn); });
-      return [h("button", { type: "button", class: "ae-btn ae-btn-ghost", onclick: () => { close(); history.replaceState(null, "", location.pathname); window.__afEditor = false; } }, "Cancel"), btn];
+      return [h("button", { type: "button", class: "ae-btn ae-btn-ghost", onclick: () => { close(); history.replaceState(null, "", location.pathname); } }, "Cancel"), btn];
     });
   }
+
+  /** "Admin login" can be clicked again at any time (e.g. after closing the box). */
+  window.__afOpenLogin = () => {
+    if (document.body.classList.contains("ae-editing")) return toast("You're already logged in — edit away, then press Publish.");
+    if (document.querySelector(".ae-backdrop")) return; // the login box is already open
+    const saved = sessionStorage.getItem(SESSION_KEY);
+    if (saved) { try { return startEditing(JSON.parse(saved)); } catch { sessionStorage.removeItem(SESSION_KEY); } }
+    showLogin();
+  };
 
   // ------------------------------------------------------------- photo helpers
   /** Shrinks a photo in the browser (JPEG, max side) so the website stays fast. */
@@ -512,10 +524,5 @@
   }
 
   // --------------------------------------------------------------------- start
-  const saved = sessionStorage.getItem(SESSION_KEY);
-  if (saved) {
-    try { startEditing(JSON.parse(saved)); } catch { sessionStorage.removeItem(SESSION_KEY); showLogin(); }
-  } else {
-    showLogin();
-  }
+  window.__afOpenLogin();
 })();

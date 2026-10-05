@@ -40,10 +40,11 @@
         <small>Create it on github.com → Settings → Developer settings → Fine-grained tokens, for this repository only, with “Contents: Read and write”.</small>
       </div>
       <div class="row">
-        <div class="field"><label for="username">Admin username</label><input id="username" autocomplete="off" autocapitalize="none" value="alok" /></div>
-        <div class="field"><label for="password">Admin password</label><input id="password" type="password" autocomplete="new-password" /></div>
+        <div class="field"><label for="username">Admin username</label><input id="username" autocomplete="off" autocapitalize="none" spellcheck="false" value="alok" /></div>
+        <div class="field"><label for="password">Admin password</label><input id="password" type="text" autocomplete="off" spellcheck="false" autocapitalize="none" /></div>
       </div>
-      <div class="field"><label for="password2">Repeat the password</label><input id="password2" type="password" autocomplete="new-password" /></div>
+      <div class="field"><label for="password2">Repeat the password</label><input id="password2" type="text" autocomplete="off" spellcheck="false" autocapitalize="none" /></div>
+      <label style="display:flex;gap:8px;align-items:center;margin:-4px 0 14px;font-size:.9rem"><input type="checkbox" id="hide" /> Hide the password while typing</label>
       <details>
         <summary>Advanced</summary>
         <div class="row">
@@ -62,6 +63,21 @@
     const b64 = (bytes) => { let s = ""; const a = new Uint8Array(bytes); for (let i = 0; i < a.length; i += 0x8000) s += String.fromCharCode(...a.subarray(i, i + 0x8000)); return btoa(s); };
     const show = (text, kind) => { const m = $("msg"); m.textContent = text; m.className = `msg ${kind}`; };
     const gh = (token, url, opts = {}) => fetch(`https://api.github.com${url}`, { ...opts, headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", ...(opts.body ? { "Content-Type": "application/json" } : {}) } });
+
+    // The password is shown while typing (and browsers can't swap in a "suggested password").
+    $("hide").addEventListener("change", (e) => { $("password").type = $("password2").type = e.target.checked ? "password" : "text"; });
+    // Optional prefill from the address bar, e.g. setup.html#u=alok&p=secret — handy on your own computer.
+    (function () {
+      const q = new URLSearchParams(location.hash.slice(1));
+      if (q.get("u")) $("username").value = q.get("u");
+      if (q.get("p")) { $("password").value = q.get("p"); $("password2").value = q.get("p"); }
+      if (location.hash) history.replaceState(null, "", location.pathname);
+    })();
+
+    async function deriveKey(username, password, salt, usage) {
+      const material = await crypto.subtle.importKey("raw", new TextEncoder().encode(`${username.trim().toLowerCase()}\n${password}`), "PBKDF2", false, ["deriveKey"]);
+      return crypto.subtle.deriveKey({ name: "PBKDF2", hash: "SHA-256", salt, iterations: ITERATIONS }, material, { name: "AES-GCM", length: 256 }, false, [usage]);
+    }
 
     $("setup").addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -83,9 +99,12 @@
         btn.textContent = "Locking the key with your password…";
         const salt = crypto.getRandomValues(new Uint8Array(16));
         const iv = crypto.getRandomValues(new Uint8Array(12));
-        const material = await crypto.subtle.importKey("raw", new TextEncoder().encode(`${username.toLowerCase()}\n${password}`), "PBKDF2", false, ["deriveKey"]);
-        const key = await crypto.subtle.deriveKey({ name: "PBKDF2", hash: "SHA-256", salt, iterations: ITERATIONS }, material, { name: "AES-GCM", length: 256 }, false, ["encrypt"]);
+        const key = await deriveKey(username, password, salt, "encrypt");
         const data = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, new TextEncoder().encode(JSON.stringify({ token, owner, repo, branch })));
+        // Self-test: unlock it exactly the way the website's Admin login will, before saving anything.
+        const unlockKey = await deriveKey(username, password, salt, "decrypt");
+        const back = JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv }, unlockKey, data)));
+        if (back.token !== token) throw new Error("Self-test failed — nothing was saved. Please try again.");
         const file = JSON.stringify({ v: 1, kdf: "PBKDF2-SHA256", cipher: "AES-256-GCM", iterations: ITERATIONS, salt: b64(salt), iv: b64(iv), data: b64(data) }, null, 2) + "\n";
 
         btn.textContent = "Saving to GitHub…";
@@ -95,8 +114,8 @@
         const put = await gh(token, path, { method: "PUT", body: JSON.stringify({ message: "Set up the admin login (encrypted access key)", content: btoa(file), branch, ...(sha ? { sha } : {}) }) });
         if (put.status === 403 || put.status === 404) throw new Error("The key can read the repository but can't save to it. Give the token “Contents: Read and write” permission.");
         if (!put.ok) throw new Error(`GitHub error ${put.status} while saving.`);
-        show("Done ✓ The admin login is ready. In a minute or two (once GitHub updates the site), use “Admin login” at the bottom of the website.", "ok");
-        $("token").value = ""; $("password").value = ""; $("password2").value = "";
+        show(`Done ✓ Saved and tested. Log in with username “${username}” and the password shown above. It works on the website within a minute or two (once GitHub updates the site).`, "ok");
+        $("token").value = "";
         btn.textContent = "Saved ✓";
       } catch (err) {
         show(err.message === "Failed to fetch" ? "No internet connection. Please try again." : err.message, "err");
