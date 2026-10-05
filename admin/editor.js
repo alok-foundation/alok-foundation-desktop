@@ -9,6 +9,8 @@
   "use strict";
   const SESSION_KEY = "af-admin-token";
   const API = "https://api.github.com";
+  /** Where the encrypted key lives. Read straight from GitHub so a new setup works instantly (no waiting for Pages). */
+  const KEY_SOURCE = { owner: "alok-foundation", repo: "alok-foundation-desktop", branch: "main", path: "admin/key.json" };
 
   // ------------------------------------------------------------------ helpers
   const h = (tag, attrs = {}, ...children) => {
@@ -60,9 +62,18 @@
   }
 
   async function unlock(username, password) {
-    const res = await fetch(`admin/key.json?v=${Date.now()}`, { cache: "no-store" });
-    if (!res.ok) throw new Error("The admin login isn't set up yet (admin/key.json is missing).");
-    const box = await res.json();
+    // Newest key from GitHub first; fall back to the copy published with the site (e.g. if GitHub's API is busy).
+    let box = null;
+    try {
+      const { owner, repo, branch, path } = KEY_SOURCE;
+      const res = await fetch(`${API}/repos/${owner}/${repo}/contents/${path}?ref=${branch}&t=${Date.now()}`, { headers: { Accept: "application/vnd.github.raw" }, cache: "no-store" });
+      if (res.ok) box = await res.json();
+    } catch { /* offline or rate-limited — try the site copy */ }
+    if (!box) {
+      const res = await fetch(`admin/key.json?v=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error("The admin login isn't set up yet (run admin/setup.html).");
+      box = await res.json();
+    }
     const key = await deriveKey(username, password, b64.toBytes(box.salt), box.iterations);
     let plain;
     try {
