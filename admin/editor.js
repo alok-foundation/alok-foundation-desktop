@@ -327,6 +327,7 @@
       doc.querySelectorAll("[data-href=whatsapp]").forEach((el) => el.setAttribute("href", `https://wa.me/${digits(c.whatsapp).replace(/^\+/, "")}`));
       doc.querySelectorAll("[data-show=whatsapp]").forEach((el) => (el.hidden = !c.whatsapp));
       doc.querySelectorAll("[data-map]").forEach((el) => { el.setAttribute("src", mapsEmbed(c.address)); el.setAttribute("title", `Map: ${c.address}`); });
+      doc.querySelectorAll("[data-text=address]").forEach((el) => (el.textContent = c.address));
       doc.querySelectorAll("[data-href=maplink]").forEach((el) => el.setAttribute("href", mapsLink(c.address)));
     }
     function contactDialog() {
@@ -337,7 +338,7 @@
         field("phone", "Phone number", "Shown on the website and used for the call button.", "tel"),
         field("email", "Email", "", "email"),
         field("whatsapp", "WhatsApp number", "Leave empty to hide the WhatsApp link.", "tel"),
-        field("address", "Map location", "An address or place name, e.g. “Uttam Nagar, New Delhi”."));
+        field("address", "Address (also used for the map)", "Shown in the Contact section; the map points here."));
       const preview = h("iframe", { class: "ae-map-preview", title: "Map preview", loading: "lazy", src: mapsEmbed(c.address || "New Delhi") });
       form.address.addEventListener("change", () => (preview.src = mapsEmbed(form.address.value)));
       dialog("Edit contact & map", h("div", {}, form, preview), (close) => [
