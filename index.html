@@ -7,12 +7,12 @@
   <meta name="description" content="Alok Foundation is a nationally registered NGO in Delhi working towards education, healthcare and environmental upliftment for underprivileged children.">
   <meta name="theme-color" content="#30608B">
   <meta name="site-version" content="2026-10-06T04:12:51.352Z">
-  <link rel="canonical" href="https://alok-foundation.github.io/alok-foundation-desktop/">
+  <link rel="canonical" href="https://alok-foundation.github.io/">
   <link rel="icon" type="image/jpeg" href="images/logo.jpg" data-img-href="logo">
   <link rel="apple-touch-icon" href="images/icon-192.png">
   <meta property="og:title" content="Alok Foundation">
   <meta property="og:description" content="Spreading the light of education — a non-profit NGO in Uttam Nagar, Delhi.">
-  <meta property="og:image" content="https://alok-foundation.github.io/alok-foundation-desktop/images/vision.jpg">
+  <meta property="og:image" content="https://alok-foundation.github.io/images/vision.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -250,6 +250,26 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
       window.addEventListener('resize', function () { if (window.innerWidth > 960) setOpen(false); });
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Highlight the menu item of the section on screen (and right away when a menu item is clicked).
+      var links = [].slice.call(menu.querySelectorAll('a[href^="#"]'));
+      function mark(id) { links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); }); }
+      links.forEach(function (a) { a.addEventListener('click', function () { mark(a.getAttribute('href').slice(1)); }); });
+      // The active section is the last one whose top has reached the header (or the last one at the very bottom of the page).
+      var targets = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+      var lock = 0, ticking = false;
+      links.forEach(function (a) { a.addEventListener('click', function () { lock = Date.now() + 1200; }); }); // let the smooth scroll finish
+      function update() {
+        ticking = false;
+        if (Date.now() < lock) return;
+        var line = document.querySelector('.site-header').getBoundingClientRect().bottom + 80;
+        var current = targets[0];
+        targets.forEach(function (t) { if (t && t.getBoundingClientRect().top <= line) current = t; });
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = targets[targets.length - 1];
+        if (current) mark(current.id);
+      }
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      update();
     })();
   </script>
   <script>
