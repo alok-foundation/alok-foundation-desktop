@@ -253,6 +253,42 @@
     })();
   </script>
   <script>
+    // Gallery: a seamless, never-ending strip. One "set" = the photos the admin chose; we add as many
+    // copies as needed to always fill the screen, then slide by exactly one set and repeat forever.
+    (function () {
+      var track = document.querySelector("[data-gallery]");
+      if (!track) return;
+      var timer;
+      function build() {
+        var originals = [].slice.call(track.querySelectorAll("img:not([aria-hidden])"));
+        [].slice.call(track.querySelectorAll("img[aria-hidden]")).forEach(function (img) { img.remove(); });
+        var setWidth = track.scrollWidth;
+        if (!originals.length || setWidth < 50) return;
+        var copies = Math.ceil(track.parentElement.clientWidth / setWidth) + 1;
+        for (var c = 0; c < copies; c++) {
+          originals.forEach(function (img) {
+            var copy = img.cloneNode(false);
+            copy.setAttribute("alt", "");
+            copy.setAttribute("aria-hidden", "true");
+            copy.removeAttribute("loading");
+            track.appendChild(copy);
+          });
+        }
+        track.style.setProperty("--shift", -setWidth + "px");
+        track.style.setProperty("--dur", Math.max(25, setWidth / 40) + "s"); // ~40px per second, any number of photos
+      }
+      function rebuild() { clearTimeout(timer); timer = setTimeout(build, 150); }
+      [].slice.call(track.querySelectorAll("img:not([aria-hidden])")).forEach(function (img) {
+        img.loading = "eager"; // measure real widths straight away
+        if (!img.complete) img.addEventListener("load", rebuild);
+      });
+      window.addEventListener("resize", rebuild);
+      window.addEventListener("load", rebuild);
+      window.__afGallery = build; // the admin editor calls this after changing the gallery
+      build();
+    })();
+  </script>
+  <script>
     // Admin: "Admin login" (or opening the page with #admin) loads the editor. Visitors never download it.
     (function () {
       function loadEditor() {

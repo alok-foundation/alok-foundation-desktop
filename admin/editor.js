@@ -404,6 +404,7 @@
           onclick: () => {
             pending.gallery = list;
             renderGallery(document, list, (x) => x.url || x.path);
+            window.__afGallery?.(); // rebuild the endless loop with the new photos
             changed();
             close();
           },
