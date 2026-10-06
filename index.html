@@ -269,20 +269,20 @@
       window.addEventListener('resize', function () { if (window.innerWidth > 960) setOpen(false); });
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      // About cards: text appears on hover (laptop), or while a finger rests on the card (phone).
-      // A scroll that merely passes over a card doesn't flash its text.
+      // About cards: text appears on hover (laptop) or when a card is tapped (phone); tap again to hide.
       [].slice.call(document.querySelectorAll('.about-card')).forEach(function (card) {
-        var timer = null, startY = 0;
-        function close() { clearTimeout(timer); card.classList.remove('open'); }
-        card.addEventListener('touchstart', function (e) {
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('click', function () {
           if (document.body.classList.contains('ae-editing')) return; // editing texts: leave the card alone
-          startY = e.touches[0].clientY;
-          timer = setTimeout(function () { card.classList.add('open'); }, 120);
-        }, { passive: true });
-        card.addEventListener('touchmove', function (e) { if (Math.abs(e.touches[0].clientY - startY) > 10) close(); }, { passive: true });
-        card.addEventListener('touchend', close);
-        card.addEventListener('touchcancel', close);
-        card.addEventListener('contextmenu', function (e) { if (card.classList.contains('open')) e.preventDefault(); });
+          if (window.matchMedia('(hover: hover)').matches) return;     // laptops use hover
+          var open = !card.classList.contains('open');
+          document.querySelectorAll('.about-card.open').forEach(function (c) { c.classList.remove('open'); });
+          card.classList.toggle('open', open);
+        });
+      });
+      // Tapping anywhere else closes an open card.
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.about-card')) document.querySelectorAll('.about-card.open').forEach(function (c) { c.classList.remove('open'); });
       });
 
       // Highlight the menu item of the section on screen (and right away when a menu item is clicked).

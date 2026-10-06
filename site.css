@@ -229,7 +229,9 @@ p { margin: 0; }
 /* Phones (centred): a short yellow line that fades out at both ends, above the tagline. */
 .footer-tagline::before { content: ""; display: block; width: 64px; height: 3px; margin: 4px auto 12px; border-radius: 3px; background: linear-gradient(90deg, rgba(248, 192, 7, 0), var(--yellow) 30%, var(--yellow) 70%, rgba(248, 192, 7, 0)); }
 
-.footer-col h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; }
+.footer-col h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 14px; }
+/* Same soft accent as the tagline: a short yellow line that fades out to the right. */
+.footer-col h3::after { content: ""; display: block; width: 44px; height: 3px; margin-top: 8px; border-radius: 3px; background: linear-gradient(90deg, var(--yellow), var(--yellow) 45%, rgba(248, 192, 7, 0)); }
 .footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .footer-col a { text-decoration: none; font-weight: 500; color: #24384C; overflow-wrap: anywhere; }
 .footer-col a:hover { color: var(--blue); text-decoration: underline; }
