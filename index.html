@@ -219,7 +219,8 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <img data-img="logo" src="images/logo.jpg" alt="Alok Foundation logo" width="120" height="120" loading="lazy">
-        <p data-edit="footerTagline">Spreading the light of education in Uttam Nagar, Delhi.</p>
+        <p class="footer-name">Alok Foundation</p>
+        <p class="footer-tagline" data-edit="footerTagline">Spreading the light of education in Uttam Nagar, Delhi.</p>
       </div>
       <nav class="footer-col" aria-label="Explore">
         <h3 data-edit="exploreTitle">Explore</h3>
@@ -267,6 +268,18 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
       window.addEventListener('resize', function () { if (window.innerWidth > 960) setOpen(false); });
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // About cards: text appears on hover (laptop) or on tap (phone); tap again to hide.
+      [].slice.call(document.querySelectorAll('.about-card')).forEach(function (card) {
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('click', function (e) {
+          if (document.body.classList.contains('ae-editing')) return; // editing texts: don't toggle
+          if (window.matchMedia('(hover: hover)').matches) return;
+          var open = !card.classList.contains('open');
+          document.querySelectorAll('.about-card.open').forEach(function (c) { c.classList.remove('open'); });
+          card.classList.toggle('open', open);
+        });
+      });
 
       // Highlight the menu item of the section on screen (and right away when a menu item is clicked).
       var links = [].slice.call(menu.querySelectorAll('a[href^="#"]'));

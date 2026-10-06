@@ -142,18 +142,30 @@ p { margin: 0; }
 .about-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 14px; }
 .about-body h3 { color: var(--yellow); font-size: clamp(1.05rem, 3.4vw, 1.5rem); font-weight: 800; }
 .about-body p { margin-top: 6px; font-size: .85rem; line-height: 1.45; color: var(--text-soft); }
-@media (max-width: 420px) { .about-body p { display: none; } .about-grid { gap: 10px; } }
+@media (max-width: 420px) { .about-grid { gap: 10px; } }
 
 @media (min-width: 900px) {
   .about-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .about-body { padding: 20px; }
   .about-body p { font-size: .95rem; }
-  /* On laptops the text slides up on hover; on touch screens it is always visible. */
-  @media (hover: hover) {
-    .about-body p { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .35s ease; }
-    .about-card:hover .about-body p, .about-card:focus-within .about-body p { max-height: 10rem; opacity: 1; }
-    .about-card:hover img { transform: scale(1.05); }
-  }
+}
+/* The text slides up on hover (laptop) or when a card is tapped (phone). */
+.about-body p { max-height: 0; opacity: 0; overflow: hidden; margin-top: 0; transition: max-height .35s ease, opacity .3s ease, margin-top .35s ease; }
+.about-card:focus-visible .about-body p, .about-card.open .about-body p { max-height: 12rem; opacity: 1; margin-top: 6px; }
+.about-card.open img { transform: scale(1.05); }
+.about-card.open::after { background: linear-gradient(180deg, rgba(0, 0, 0, .05) 10%, rgba(13, 22, 32, .95) 100%); }
+/* Hover only on devices with a real mouse (phones keep a "sticky" hover after a tap). */
+@media (hover: hover) {
+  .about-card:hover .about-body p { max-height: 12rem; opacity: 1; margin-top: 6px; }
+  .about-card:hover img { transform: scale(1.05); }
+  .about-card:hover::after { background: linear-gradient(180deg, rgba(0, 0, 0, .05) 10%, rgba(13, 22, 32, .95) 100%); }
+}
+.about-card { cursor: pointer; }
+.about-card:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+@media (hover: none) {
+  .about-body h3 { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .about-body h3::after { content: "+"; flex-shrink: 0; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(255, 255, 255, .9); color: var(--navy); font-size: 18px; line-height: 1; transition: transform .25s ease; }
+  .about-card.open .about-body h3::after { transform: rotate(45deg); }
 }
 
 /* ------------------------------------------------------- vision & mission */
@@ -212,10 +224,13 @@ p { margin: 0; }
 /* ---------------------------------------------------------------- footer */
 .site-footer { background: linear-gradient(96deg, var(--sky) 0%, #FAFCFD 100%); color: var(--navy); padding-top: clamp(36px, 5vw, 56px); border-top: 8px solid var(--yellow); }
 .footer-grid { display: grid; gap: 32px; grid-template-columns: 1fr 1fr; }
-.footer-brand { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; }
+.footer-brand { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
 .footer-brand img { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 24px rgba(16, 32, 52, .18); flex-shrink: 0; }
-.footer-brand p { font-weight: 600; max-width: 18rem; }
-.footer-col h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; }
+.footer-name { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; color: var(--navy); line-height: 1.2; }
+.footer-tagline { max-width: 20rem; font-size: .98rem; font-weight: 500; font-style: italic; line-height: 1.55; color: #33506B; text-wrap: balance; }
+.footer-tagline::before { content: ""; display: block; width: 36px; height: 3px; margin: 2px auto 10px; border-radius: 2px; background: var(--yellow); }
+.footer-col h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 14px; padding-bottom: 8px; position: relative; }
+.footer-col h3::after { content: ""; position: absolute; left: 0; bottom: 0; width: 28px; height: 3px; border-radius: 2px; background: var(--yellow); }
 .footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .footer-col a { text-decoration: none; font-weight: 500; color: #24384C; overflow-wrap: anywhere; }
 .footer-col a:hover { color: var(--blue); text-decoration: underline; }
@@ -227,7 +242,8 @@ p { margin: 0; }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } .footer-col a { overflow-wrap: normal; } }
 @media (min-width: 900px) {
   .footer-grid { grid-template-columns: 1.1fr .8fr 1fr 1.3fr; gap: 40px; align-items: start; }
-  .footer-brand { grid-column: auto; flex-direction: column; align-items: flex-start; }
+  .footer-brand { grid-column: auto; align-items: flex-start; text-align: left; }
+  .footer-tagline::before { margin-left: 0; }
   .footer-brand img { width: 120px; height: 120px; }
   .footer-map { grid-column: auto; }
 }
@@ -242,3 +258,10 @@ p { margin: 0; }
   color: #24384C; font-size: .95rem; font-weight: 500; line-height: 1.55; text-wrap: pretty;
 }
 .footer-address .pin { flex-shrink: 0; line-height: 1.55; }
+
+/* Phones/tablets: Explore links as compact pills so the footer stays short. */
+@media (max-width: 899px) {
+  nav.footer-col ul { display: flex; flex-wrap: wrap; gap: 8px; }
+  nav.footer-col li a { display: inline-block; padding: 7px 14px; border-radius: 999px; background: rgba(255, 255, 255, .7); border: 1px solid rgba(48, 96, 139, .15); font-size: .92rem; }
+  .footer-brand img { width: 96px; height: 96px; }
+}
