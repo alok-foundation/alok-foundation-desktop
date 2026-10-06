@@ -307,7 +307,6 @@
     // --------------------------------------------------------- contact & map
     const digits = (v) => String(v || "").replace(/[^\d+]/g, "");
     const mapsEmbed = (a) => `https://maps.google.com/maps?q=${encodeURIComponent(a)}&z=15&output=embed`;
-    const mapsLink = (a) => `https://maps.google.com/?q=${encodeURIComponent(a)}`;
     const currentContact = () => {
       const wa = document.querySelector("[data-show=whatsapp]");
       const map = document.querySelector("[data-map]");
@@ -328,7 +327,6 @@
       doc.querySelectorAll("[data-show=whatsapp]").forEach((el) => (el.hidden = !c.whatsapp));
       doc.querySelectorAll("[data-map]").forEach((el) => { el.setAttribute("src", mapsEmbed(c.address)); el.setAttribute("title", `Map: ${c.address}`); });
       doc.querySelectorAll("[data-text=address]").forEach((el) => (el.textContent = c.address));
-      doc.querySelectorAll("[data-href=maplink]").forEach((el) => el.setAttribute("href", mapsLink(c.address)));
     }
     function contactDialog() {
       const c = pending.contact || currentContact();

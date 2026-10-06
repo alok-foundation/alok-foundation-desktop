@@ -238,7 +238,6 @@ p { margin: 0; }
 .footer-map { grid-column: 1 / -1; }
 .footer-mapwide { margin-top: clamp(24px, 3vw, 36px); }
 .footer-mapwide iframe { display: block; width: 100%; height: clamp(200px, 26vw, 300px); border: 0; border-radius: var(--radius); box-shadow: 0 8px 24px rgba(16, 32, 52, .15); background: #E5EEF7; }
-.map-link { display: inline-block; margin-top: 2px; font-weight: 600; color: var(--blue); }
 .copyright { text-align: center; font-size: .9rem; color: #3E556B; padding: 18px var(--gutter) 22px; margin-top: clamp(24px, 3vw, 32px); border-top: 1px solid rgba(31, 41, 51, .12); }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } .footer-col a { overflow-wrap: normal; } }
 @media (min-width: 900px) {
