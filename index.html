@@ -269,16 +269,20 @@
       window.addEventListener('resize', function () { if (window.innerWidth > 960) setOpen(false); });
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      // About cards: text appears on hover (laptop) or on tap (phone); tap again to hide.
+      // About cards: text appears on hover (laptop), or while a finger rests on the card (phone).
+      // A scroll that merely passes over a card doesn't flash its text.
       [].slice.call(document.querySelectorAll('.about-card')).forEach(function (card) {
-        card.setAttribute('tabindex', '0');
-        card.addEventListener('click', function (e) {
-          if (document.body.classList.contains('ae-editing')) return; // editing texts: don't toggle
-          if (window.matchMedia('(hover: hover)').matches) return;
-          var open = !card.classList.contains('open');
-          document.querySelectorAll('.about-card.open').forEach(function (c) { c.classList.remove('open'); });
-          card.classList.toggle('open', open);
-        });
+        var timer = null, startY = 0;
+        function close() { clearTimeout(timer); card.classList.remove('open'); }
+        card.addEventListener('touchstart', function (e) {
+          if (document.body.classList.contains('ae-editing')) return; // editing texts: leave the card alone
+          startY = e.touches[0].clientY;
+          timer = setTimeout(function () { card.classList.add('open'); }, 120);
+        }, { passive: true });
+        card.addEventListener('touchmove', function (e) { if (Math.abs(e.touches[0].clientY - startY) > 10) close(); }, { passive: true });
+        card.addEventListener('touchend', close);
+        card.addEventListener('touchcancel', close);
+        card.addEventListener('contextmenu', function (e) { if (card.classList.contains('open')) e.preventDefault(); });
       });
 
       // Highlight the menu item of the section on screen (and right away when a menu item is clicked).
